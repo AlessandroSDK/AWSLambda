@@ -2,6 +2,7 @@
 
 const AWS = require('aws-sdk');
 const dynamo = new AWS.DynamoDB.DocumentClient();
+const uuid = require('uuid'); 
 
 module.exports.handler = (event, context, callback) => {
     const data = JSON.parse(event.body);
@@ -14,7 +15,7 @@ module.exports.handler = (event, context, callback) => {
     const  params = {
         TableName: 'BlogTable',
         Item: {
-            article_id: "1",
+            article_id: uuid.v1(),
             text: data.text
         },
     };

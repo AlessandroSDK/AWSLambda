@@ -4,6 +4,15 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: eu-central-1
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:Query
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+    Resource: "arn:aws:dynamodb:eu-central-1:083804445843:table/BlogTable"
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
